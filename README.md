@@ -37,13 +37,13 @@ None
 Example Playbook
 ----------------
 ```
-- name: Try out any module or role
+- name: Modify the Automate Workspace
   hosts: localhost
   connection: local
 
   gather_facts: False
   vars:
-    auto_commit: True 
+    auto_commit: True
     manageiq:
       api_url: 'http://localhost:3000'
       username: 'admin'
@@ -127,7 +127,7 @@ Example Playbook
         set_attribute:
           object: "root"
           attribute: "my_name"
-          value:  "Caleb"
+          value:  "jim"
       register: workspace
 
     - name: "Set attributes"
