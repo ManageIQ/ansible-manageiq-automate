@@ -1,7 +1,7 @@
 Role Name
 =========
 
-The `manageiq-automate` role allows for users of ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook. 
+The `manageiq-automate` role allows for users of ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook.
 The role includes a module `automate_workspace` which does all the heavy lifting needed to modify or change the Automate Workspace.
 
 Requirements
@@ -9,7 +9,7 @@ Requirements
 
 ManageIQ has to be Gaprindashvili (G Release) or higher.
 
-The role requires the following modules which are installed previous to running plays in the playbook.
+The role requires and automatically installs the following modules.
 1. `manageiq-api-client-python`
 2. `requests`
 3. `dpath`
@@ -25,7 +25,7 @@ Auto Commit:
     call to a `set_` method in the `automate_workspace` module.
 
 Workspace:
-    `workspace` instantiated via `tasks/main.yml` 
+    `workspace` instantiated via `tasks/main.yml`
     The current version of the workspace as it is modified via methods
     in the `automate_workspace` module.
 
@@ -36,12 +36,120 @@ None
 
 Example Playbook
 ----------------
+```
+- name: Try out any module or role
+  hosts: localhost
+  connection: local
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+  gather_facts: False
+  vars:
+    auto_commit: True 
+    manageiq:
+      api_url: 'http://localhost:3000'
+      username: 'admin'
+      password: 12345
+      automate_workspace: 'automate_workspaces/d405be03'
+  roles:
+  - manageiq-automate
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+  tasks:
+    - name: "Check an attribute"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        attribute_exists:
+          object: "/ManageIQ/System/Request/call_instance"
+          attribute: "::miq::parent"
+
+    - name: "Get an attribute"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_attribute:
+          object: "/ManageIQ/System/Request/call_instance"
+          attribute: "::miq::parent"
+
+    - name: "Check a state_var"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        state_var_exists:
+          attribute: "task_id"
+
+    - name: "Get a state_var"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_state_var:
+          attribute: "task_id"
+
+    - name: "Set a State Var"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_state_var:
+          attribute: "job_id"
+          value: "xyz"
+      register: workspace
+
+    - name: "Check a Method Parameter"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        method_parameter_exists:
+          parameter: "task_id"
+
+    - name: "Get a Method Parameter"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_method_parameter:
+          parameter: "invoice"
+
+    - name: "Get the full list of Objects"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_object_names: yes
+
+    - name: "Get the list of Method Parameters"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_method_parameters: yes
+      register: method_params
+
+    - name: "Get the list of State Vars"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_state_var_names: yes
+
+    - name: "Get the full list of Object Attribute Names"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_object_attribute_names:
+          object: "root"
+
+    - name: "Set an attribute"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_attribute:
+          object: "root"
+          attribute: "my_name"
+          value:  "Caleb"
+      register: workspace
+
+    - name: "Set attributes"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_attributes:
+          object: "root"
+          attributes:
+            family_name: 'timmer'
+            eldest_son: 'reed'
+            youngest_son: 'olaf'
+      register: workspace
+
+    - name: Grab a vmdb object
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_vmdb_object:
+          object: root
+          attribute: miq_group
+
+```
+
 
 License
 -------
