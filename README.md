@@ -54,7 +54,7 @@ A verbose example with manual strings passed to each method of the
     - password: "12345"
     - automate_workspace: "automate_workspaces/d405be03"
   roles:
-  - manageiq-automate
+  - syncrou.manageiq-automate
 
   tasks:
     - name: "Check an attribute"
@@ -173,7 +173,7 @@ attributes with passed in `method_parameters` and change the retry.
 
   gather_facts: False
   roles:
-  - manageiq-automate
+  - syncrou.manageiq-automate
 
   tasks:
     - name: "Get the list of Method Parameters"
