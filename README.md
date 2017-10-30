@@ -49,10 +49,10 @@ A verbose example with manual strings passed to each method of the
   vars:
   - auto_commit: True
   - manageiq:
-    - api_url: 'http://localhost:3000'
-    - username: 'admin'
-    - password: 12345
-    - automate_workspace: 'automate_workspaces/d405be03'
+    - api_url: "http://localhost:3000"
+    - username: "admin"
+    - password: "12345"
+    - automate_workspace: "automate_workspaces/d405be03"
   roles:
   - manageiq-automate
 
@@ -140,9 +140,9 @@ A verbose example with manual strings passed to each method of the
         set_attributes:
           object: "root"
           attributes:
-            family_name: 'timmer'
-            eldest_son: 'reed'
-            youngest_son: 'olaf'
+            family_name: "timmer"
+            eldest_son: "reed"
+            youngest_son: "olaf"
       register: workspace
 
     - name: Grab a vmdb object
@@ -164,10 +164,10 @@ attributes with passed in `method_parameters` and change the retry.
   vars:
   - auto_commit: True
   - manageiq:
-    - api_url: 'http://localhost:3000'
-    - username: 'admin'
-    - password: 12345
-    - automate_workspace: 'automate_workspaces/d405be03'
+    - api_url: "http://localhost:3000"
+    - username: "admin"
+    - password: "12345"
+    - automate_workspace: "automate_workspaces/d405be03"
   - object: root
   - interval: 600
 
