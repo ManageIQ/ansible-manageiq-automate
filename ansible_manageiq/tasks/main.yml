@@ -1,0 +1,14 @@
+---
+- name: "Install Required Modules"
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - git+https://github.com/syncrou/manageiq-api-client-python.git#egg=manageiq_client
+    - requests
+    - dpath
+
+- name: "Initialize the Workspace"
+  manageiq_automate:
+    initialize_workspace: 
+      auto_commit: "{{ auto_commit }}"
+  register: workspace
