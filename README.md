@@ -36,6 +36,10 @@ None
 
 Example Playbook
 ----------------
+
+A verbose example with manual strings passed to each method of the
+`manageiq_automate` module
+
 ```
 - name: Modify the Automate Workspace
   hosts: localhost
@@ -43,12 +47,12 @@ Example Playbook
 
   gather_facts: False
   vars:
-    auto_commit: True
-    manageiq:
-      api_url: 'http://localhost:3000'
-      username: 'admin'
-      password: 12345
-      automate_workspace: 'automate_workspaces/d405be03'
+  - auto_commit: True
+  - manageiq:
+    - api_url: 'http://localhost:3000'
+    - username: 'admin'
+    - password: 12345
+    - automate_workspace: 'automate_workspaces/d405be03'
   roles:
   - manageiq-automate
 
@@ -150,6 +154,47 @@ Example Playbook
 
 ```
 
+An example making use of variable substitution to modify some object
+attributes with passed in `method_parameters` and change the retry.
+
+```
+- name: Siphon Method Parameters into an object
+  hosts: localhost
+  connection: local
+  vars:
+  - auto_commit: True
+  - manageiq:
+    - api_url: 'http://localhost:3000'
+    - username: 'admin'
+    - password: 12345
+    - automate_workspace: 'automate_workspaces/d405be03'
+  - object: root
+  - interval: 600
+
+  gather_facts: False
+  roles:
+  - manageiq-automate
+
+  tasks:
+    - name: "Get the list of Method Parameters"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_method_parameters: yes
+      register: method_params
+
+    - name: "Set attributes"
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_attributes:
+          object: "{{ object }}"
+          attributes: "{{ method_params.value }}"
+
+    - name: Set Retry
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_retry:
+          interval: "{{ interval }}"
+```
 
 License
 -------
