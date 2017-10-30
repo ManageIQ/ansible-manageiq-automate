@@ -1,22 +1,38 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+The `manageiq-automate` role allows for users of ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook. 
+The role includes a module `automate_workspace` which does all the heavy lifting needed to modify or change the Automate Workspace.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+ManageIQ has to be Gaprindashvili (G Release) or higher.
+
+The role requires the following modules which are installed previous to running plays in the playbook.
+1. `manageiq-api-client-python`
+2. `requests`
+3. `dpath`
+
+The example playbook makes use of the `automate_workspace` module which is also included as part of this role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Auto Commit:
+    `auto_commit` defaults to `False` in `defaults/main.yml`
+    If set to `True` it will auto commit back to ManageIQ each
+    call to a `set_` method in the `automate_workspace` module.
+
+Workspace:
+    `workspace` instantiated via `tasks/main.yml` 
+    The current version of the workspace as it is modified via methods
+    in the `automate_workspace` module.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
@@ -30,9 +46,4 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Apache
