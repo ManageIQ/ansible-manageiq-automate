@@ -1,2 +1,7 @@
 ---
 auto_commit: False
+manageiq:
+  url: 'http://localhost:3000'
+  username: 'admin'
+  password: 'password'
+  automate_workspace: 'automate_workspaces/1234-guid'

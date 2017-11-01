@@ -48,11 +48,7 @@ A verbose example with manual strings passed to each method of the
   gather_facts: False
   vars:
   - auto_commit: True
-  - manageiq:
-    - api_url: "http://localhost:3000"
-    - username: "admin"
-    - password: "12345"
-    - automate_workspace: "automate_workspaces/d405be03"
+
   roles:
   - syncrou.manageiq-automate
 
@@ -163,11 +159,6 @@ attributes with passed in `method_parameters` and change the retry.
   connection: local
   vars:
   - auto_commit: True
-  - manageiq:
-    - api_url: "http://localhost:3000"
-    - username: "admin"
-    - password: "12345"
-    - automate_workspace: "automate_workspaces/d405be03"
   - object: root
   - interval: 600
 

@@ -11,4 +11,5 @@
   manageiq_automate:
     initialize_workspace: 
       auto_commit: "{{ auto_commit }}"
+    manageiq_connection: "{{ manageiq }}"
   register: workspace
