@@ -29,13 +29,13 @@ ManageIQ:
     Remember to use Ansible Vault for passwords.
     `automate_workspace` is the url including guid to talk to the Automate Workspace.
 
-    ```
+```
     manageiq:
         api_url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
-    ```
+```
 
 Workspace:
     `workspace` instantiated via `tasks/main.yml`.
