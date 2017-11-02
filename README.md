@@ -20,12 +20,25 @@ Role Variables
 --------------
 
 Auto Commit:
-    `auto_commit` defaults to `False` in `defaults/main.yml`
+    `auto_commit` defaults to `False` in `defaults/main.yml`.
     If set to `True` it will auto commit back to ManageIQ each
     call to a `set_` method in the `automate_workspace` module.
 
+ManageIQ:
+    `manageiq` is a dictionary with a set of connection defaults in `defaults/main.yml`.
+    Remember to use Ansible Vault for passwords.
+    `automate_workspace` is the url including guid to talk to the Automate Workspace.
+
+    ```
+    manageiq:
+        api_url: 'http://localhost:3000'
+        username: 'admin'
+        password: 'password'
+        automate_workspace: 'automate_workspaces/1234'
+    ```
+
 Workspace:
-    `workspace` instantiated via `tasks/main.yml`
+    `workspace` instantiated via `tasks/main.yml`.
     The current version of the workspace as it is modified via methods
     in the `automate_workspace` module.
 
@@ -48,6 +61,11 @@ A verbose example with manual strings passed to each method of the
   gather_facts: False
   vars:
   - auto_commit: True
+  - manageiq:
+        api_url: 'http://localhost:3000'
+        username: 'admin'
+        password: 'password'
+        automate_workspace: 'automate_workspaces/1234'
 
   roles:
   - syncrou.manageiq-automate
@@ -161,6 +179,11 @@ attributes with passed in `method_parameters` and change the retry.
   - auto_commit: True
   - object: root
   - interval: 600
+  - manageiq:
+        api_url: 'http://localhost:3000'
+        username: 'admin'
+        password: 'password'
+        automate_workspace: 'automate_workspaces/1234'
 
   gather_facts: False
   roles:
