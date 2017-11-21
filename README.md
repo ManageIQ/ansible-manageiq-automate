@@ -1,4 +1,4 @@
-Role Name
+manageiq-automate
 =========
 
 The `manageiq-automate` role allows for users of ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook.
