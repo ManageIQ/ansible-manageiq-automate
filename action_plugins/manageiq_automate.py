@@ -29,20 +29,13 @@ __metaclass__ = type
 from ansible.plugins.action import ActionBase
 from ansible.utils.vars import merge_hash
 
-MANAGEIQ_ARGS_MAP = {'token': 'api_token',
-                     'url': 'api_url',
-                     'username': 'username',
-                     'password': 'password',
-                     'group': 'group',
-                     'automate_workspace': 'automate_workspace',
-                     'X-MIQ_Group': 'X-MIQ_Group'}
 MANAGEIQ_MODULE_VARS = ('username',
                         'password',
                         'url',
                         'token',
                         'group',
                         'automate_workspace',
-                        'X-MIQ_Group')
+                        'X_MIQ_Group')
 
 
 class ActionModule(ActionBase):
@@ -64,7 +57,7 @@ class ActionModule(ActionBase):
         for k in MANAGEIQ_MODULE_VARS:
             if k not in module_vars['manageiq_connection']:
                 try:
-                    module_vars['manageiq_connection'][k] = task_vars['manageiq'][MANAGEIQ_ARGS_MAP[k]]
+                    module_vars['manageiq_connection'][k] = task_vars['manageiq'][k]
                 except KeyError:
                     pass
 
