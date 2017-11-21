@@ -9,8 +9,6 @@ Requirements
 
 ManageIQ has to be Gaprindashvili (G Release) or higher.
 
-No external dependancies required.
-
 The example playbook makes use of the `automate_workspace` module which is also included as part of this role.
 
 Role Variables
