@@ -2,14 +2,14 @@ manageiq-automate
 =========
 
 The `manageiq-automate` role allows for users of ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook.
-The role includes a module `automate_workspace` which does all the heavy lifting needed to modify or change the Automate Workspace.
+The role includes a module `manageiq_automate` which does all the heavy lifting needed to modify or change the Automate Workspace.
 
 Requirements
 ------------
 
 ManageIQ has to be Gaprindashvili (G Release) or higher.
 
-The example playbook makes use of the `automate_workspace` module which is also included as part of this role.
+The example playbook makes use of the `manageiq_automate` module which is also included as part of this role.
 
 Role Variables
 --------------
@@ -17,7 +17,7 @@ Role Variables
 Auto Commit:
     `auto_commit` defaults to `False` in `defaults/main.yml`.
     If set to `True` it will auto commit back to ManageIQ each
-    call to a `set_` method in the `automate_workspace` module.
+    call to a `set_` method in the `manageiq_automate` module.
 
 ManageIQ:
     `manageiq` is a dictionary with a set of connection defaults in `defaults/main.yml`.
@@ -35,7 +35,7 @@ ManageIQ:
 Workspace:
     `workspace` instantiated via `tasks/main.yml`.
     The current version of the workspace as it is modified via methods
-    in the `automate_workspace` module.
+    in the `manageiq_automate` module.
 
 Dependencies
 ------------
