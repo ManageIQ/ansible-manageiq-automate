@@ -9,10 +9,7 @@ Requirements
 
 ManageIQ has to be Gaprindashvili (G Release) or higher.
 
-The role requires and automatically installs the following modules.
-1. `manageiq-api-client-python`
-2. `requests`
-3. `dpath`
+No external dependancies required.
 
 The example playbook makes use of the `automate_workspace` module which is also included as part of this role.
 
