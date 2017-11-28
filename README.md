@@ -26,7 +26,7 @@ ManageIQ:
 
 ```
     manageiq:
-        api_url: 'http://localhost:3000'
+        url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
@@ -153,6 +153,30 @@ A verbose example with manual strings passed to each method of the
             eldest_son: "reed"
             youngest_son: "olaf"
       register: workspace
+
+    - name: Decrypt an attribute from an object
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_decrypted_attribute:
+          object: root
+          attribute: fred
+      register: decrypted_attribute
+
+    - debug: msg=decrypted_attribute
+
+    - name: Decrypt a method_parameter from an object
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        get_decrypted_method_parameter:
+          attribute: fred
+
+    - name: Encrypt an object attribute
+      manageiq_automate:
+        workspace: "{{ workspace }}"
+        set_encrypted_attribute:
+          object: root
+          attribute: freddy
+          value: 'smartvm'
 
     - name: Grab a vmdb object
       manageiq_automate:
