@@ -57,7 +57,7 @@ A verbose example with manual strings passed to each method of the
   vars:
   - auto_commit: True
   - manageiq:
-        api_url: 'http://localhost:3000'
+        url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
@@ -199,7 +199,7 @@ attributes with passed in `method_parameters` and change the retry.
   - object: root
   - interval: 600
   - manageiq:
-        api_url: 'http://localhost:3000'
+        url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
