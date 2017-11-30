@@ -47,11 +47,13 @@ class ActionModule(ActionBase):
         verify_ssl = True
         ca_bundle_path = None
 
-        # Lots of work massaging the hash
+        # Lots of work massaging the dictionary
         if 'api_url' in task_vars['manageiq']:
-            task_vars['manageiq']['url'] = task_vars['manageiq']['api_url']
+            url = task_vars['manageiq'].pop('api_url')
+            task_vars['manageiq']['url'] = url
         if 'api_token' in task_vars['manageiq']:
-            task_vars['manageiq']['token'] = task_vars['manageiq']['api_token']
+            token = task_vars['manageiq'].pop('api_token')
+            task_vars['manageiq']['token'] = token
 
         if 'manageiq_connection' not in module_vars.keys() or module_vars['manageiq_connection'] is None:
             module_vars['manageiq_connection'] = dict()
