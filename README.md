@@ -19,6 +19,12 @@ Auto Commit:
     If set to `True` it will auto commit back to ManageIQ each
     call to a `set_` method in the `manageiq_automate` module.
 
+Verify SSL:
+    `verify_ssl` defaults to `True`.
+    If set to `False` in the `manageiq` dictionary
+    then the lookup will allow self signed certificates
+    to be used when using SSL REST API connection urls.
+
 ManageIQ:
     `manageiq` is a dictionary with a set of connection defaults in `defaults/main.yml`.
     Remember to use Ansible Vault for passwords.
@@ -30,6 +36,7 @@ ManageIQ:
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
+        verify_ssl: false
 ```
 
 Workspace:
@@ -61,6 +68,7 @@ A verbose example with manual strings passed to each method of the
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
+        verify_ssl: false
 
   roles:
   - syncrou.manageiq-automate
@@ -203,6 +211,7 @@ attributes with passed in `method_parameters` and change the retry.
         username: 'admin'
         password: 'password'
         automate_workspace: 'automate_workspaces/1234'
+        verify_ssl: false
 
   gather_facts: False
   roles:

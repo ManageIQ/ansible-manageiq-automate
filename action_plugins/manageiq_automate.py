@@ -44,13 +44,13 @@ class ActionModule(ActionBase):
         if 'manageiq' not in task_vars.keys():
             return module_vars
 
-        verify_ssl = None
+        verify_ssl = True
         ca_bundle_path = None
 
         if 'manageiq_connection' not in module_vars.keys() or module_vars['manageiq_connection'] is None:
             module_vars['manageiq_connection'] = dict()
         if 'verify_ssl' in module_vars['manageiq_connection'].keys():
-            verify_ssl = module_vars['manageiq_connection'].pop('verify_ssl', None)
+            verify_ssl = module_vars['manageiq_connection'].pop('verify_ssl', True)
         if 'ca_bundle_path' in module_vars['manageiq_connection'].keys():
             ca_bundle_path = module_vars['manageiq_connection'].pop('ca_bundle_path', None)
 
