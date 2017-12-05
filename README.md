@@ -26,12 +26,12 @@ Verify SSL:
     to be used when using SSL REST API connection urls.
 
 ManageIQ:
-    `manageiq` is a dictionary with a set of connection defaults in `defaults/main.yml`.
+    `manageiq_connection` is a dictionary with a set of connection defaults in `defaults/main.yml`.
     Remember to use Ansible Vault for passwords.
     `automate_workspace` is the url including guid to talk to the Automate Workspace.
 
 ```
-    manageiq:
+    manageiq_connection:
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
@@ -63,7 +63,7 @@ A verbose example with manual strings passed to each method of the
   gather_facts: False
   vars:
   - auto_commit: True
-  - manageiq:
+  - manageiq_connection:
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
@@ -84,8 +84,7 @@ A verbose example with manual strings passed to each method of the
     - name: "Get an attribute"
       manageiq_automate:
         workspace: "{{ workspace }}"
-        get_attribute:
-          object: "/ManageIQ/System/Request/call_instance"
+        get_attribute: object: "/ManageIQ/System/Request/call_instance"
           attribute: "::miq::parent"
 
     - name: "Check a state_var"
@@ -206,7 +205,7 @@ attributes with passed in `method_parameters` and change the retry.
   - auto_commit: True
   - object: root
   - interval: 600
-  - manageiq:
+  - manageiq_connection:
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
