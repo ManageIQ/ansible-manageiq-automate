@@ -50,6 +50,7 @@ class ManageIQAutomate(object):
 
 
     def _build_auth(self):
+        self._module.params['validate_certs'] = self._module.params['manageiq_connection']['validate_certs']
         self._headers = {'Content-Type': 'application/json; charset=utf-8'}
         if self._module.params['manageiq_connection'].get('token'):
             self._headers["X-Auth-Token"] = self._module.params['manageiq_connection']['token']
@@ -417,7 +418,7 @@ def manageiq_argument_spec():
         automate_workspace=dict(default=None, type='str', no_log=True),
         group=dict(default=None, type='str'),
         X_MIQ_Group=dict(default=None, type='str'),
-        verify_ssl=dict(default=True, type='bool'),
+        validate_certs=dict(default=True, type='bool'),
         ca_bundle_path=dict(required=False, default=None),
     )
 

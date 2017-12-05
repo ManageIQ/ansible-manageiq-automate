@@ -47,14 +47,14 @@ class ActionModule(ActionBase):
             return module_vars
 
 
-        verify_ssl = True
+        validate_certs = True
         ca_bundle_path = None
 
 
         if 'manageiq_connection' not in module_vars.keys() or module_vars['manageiq_connection'] is None:
             module_vars['manageiq_connection'] = dict()
-        if 'verify_ssl' in module_vars['manageiq_connection'].keys():
-            verify_ssl = module_vars['manageiq_connection'].pop('verify_ssl', True)
+        if 'validate_certs' in module_vars['manageiq_connection'].keys():
+            validate_certs = module_vars['manageiq_connection'].pop('validate_certs', True)
         if 'ca_bundle_path' in module_vars['manageiq_connection'].keys():
             ca_bundle_path = module_vars['manageiq_connection'].pop('ca_bundle_path', None)
 
@@ -65,7 +65,7 @@ class ActionModule(ActionBase):
                 except KeyError:
                     pass
 
-        module_vars['manageiq_connection']['verify_ssl'] = verify_ssl
+        module_vars['manageiq_connection']['validate_certs'] = validate_certs
         module_vars['manageiq_connection']['ca_bundle_path'] = ca_bundle_path
 
         return module_vars
