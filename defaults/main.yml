@@ -1,6 +1,6 @@
 ---
 auto_commit: False
-manageiq:
+manageiq_connection:
   api_url: 'http://localhost:3000'
   username: 'admin'
   password: 'password'

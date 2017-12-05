@@ -35,7 +35,9 @@ MANAGEIQ_MODULE_VARS = ('username',
                         'token',
                         'group',
                         'automate_workspace',
-                        'X_MIQ_Group')
+                        'X_MIQ_Group',
+                        'validate_certs')
+
 
 
 class ActionModule(ActionBase):
@@ -47,16 +49,8 @@ class ActionModule(ActionBase):
             return module_vars
 
 
-        validate_certs = True
-        ca_bundle_path = None
-
-
         if 'manageiq_connection' not in module_vars.keys() or module_vars['manageiq_connection'] is None:
             module_vars['manageiq_connection'] = dict()
-        if 'validate_certs' in module_vars['manageiq_connection'].keys():
-            validate_certs = module_vars['manageiq_connection'].pop('validate_certs', True)
-        if 'ca_bundle_path' in module_vars['manageiq_connection'].keys():
-            ca_bundle_path = module_vars['manageiq_connection'].pop('ca_bundle_path', None)
 
         for k in MANAGEIQ_MODULE_VARS:
             if k not in module_vars['manageiq_connection'].keys():
@@ -65,8 +59,6 @@ class ActionModule(ActionBase):
                 except KeyError:
                     pass
 
-        module_vars['manageiq_connection']['validate_certs'] = validate_certs
-        module_vars['manageiq_connection']['ca_bundle_path'] = ca_bundle_path
 
         return module_vars
 
