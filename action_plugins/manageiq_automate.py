@@ -41,19 +41,15 @@ MANAGEIQ_MODULE_VARS = ('username',
 class ActionModule(ActionBase):
 
     def manageiq_extra_vars(self, module_vars, task_vars):
+        if 'manageiq_connection' in task_vars.keys():
+            module_vars['manageiq_connection'] = task_vars['manageiq_connection']
         if 'manageiq' not in task_vars.keys():
             return module_vars
+
 
         verify_ssl = True
         ca_bundle_path = None
 
-        # Lots of work massaging the dictionary
-        if 'api_url' in task_vars['manageiq']:
-            url = task_vars['manageiq'].pop('api_url')
-            task_vars['manageiq']['url'] = url
-        if 'api_token' in task_vars['manageiq']:
-            token = task_vars['manageiq'].pop('api_token')
-            task_vars['manageiq']['token'] = token
 
         if 'manageiq_connection' not in module_vars.keys() or module_vars['manageiq_connection'] is None:
             module_vars['manageiq_connection'] = dict()
@@ -63,7 +59,7 @@ class ActionModule(ActionBase):
             ca_bundle_path = module_vars['manageiq_connection'].pop('ca_bundle_path', None)
 
         for k in MANAGEIQ_MODULE_VARS:
-            if k not in module_vars['manageiq_connection']:
+            if k not in module_vars['manageiq_connection'].keys():
                 try:
                     module_vars['manageiq_connection'][k] = task_vars['manageiq'][k]
                 except KeyError:
