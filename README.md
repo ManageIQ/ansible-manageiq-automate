@@ -11,6 +11,15 @@ ManageIQ has to be Gaprindashvili (G Release) or higher.
 
 The example playbook makes use of the `manageiq_automate` module which is also included as part of this role.
 
+If you have a requirement to include this Role in Ansible Tower or Embedded Ansible, simply add an empty `roles`
+directory at the root of your playbook and include a `requirements.yml` file with the following contents inside
+that directory:
+
+```
+---
+- src: syncrou.manageiq-automate
+```
+
 Role Variables
 --------------
 
@@ -19,24 +28,24 @@ Auto Commit:
     If set to `True` it will auto commit back to ManageIQ each
     call to a `set_` method in the `manageiq_automate` module.
 
-Verify SSL:
-    `verify_ssl` defaults to `True`.
-    If set to `False` in the `manageiq` dictionary
+Validate Certs:
+    `validate_certs` defaults to `True`.
+    If set to `False` in the `manageiq_connection` dictionary
     then the lookup will allow self signed certificates
     to be used when using SSL REST API connection urls.
 
 ManageIQ:
     `manageiq_connection` is a dictionary with a set of connection defaults in `defaults/main.yml`.
     Remember to use Ansible Vault for passwords.
-    `automate_workspace` is the url including guid to talk to the Automate Workspace.
+    `automate_workspace` is the guid required to talk to the Automate Workspace.
 
 ```
     manageiq_connection:
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
-        automate_workspace: 'automate_workspaces/1234'
-        verify_ssl: false
+        automate_workspace: '1234'
+        validate_certs: false
 ```
 
 Workspace:
@@ -64,11 +73,11 @@ A verbose example with manual strings passed to each method of the
   vars:
   - auto_commit: True
   - manageiq_connection:
-        url: 'http://localhost:3000'
+        url: 'https://localhost:3000'
         username: 'admin'
         password: 'password'
-        automate_workspace: 'automate_workspaces/1234'
-        verify_ssl: false
+        automate_workspace: '1234'
+        validate_certs: false
 
   roles:
   - syncrou.manageiq-automate
@@ -209,8 +218,7 @@ attributes with passed in `method_parameters` and change the retry.
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
-        automate_workspace: 'automate_workspaces/1234'
-        verify_ssl: false
+        automate_workspace: '1234'
 
   gather_facts: False
   roles:
