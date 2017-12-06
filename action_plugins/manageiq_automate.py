@@ -36,7 +36,10 @@ MANAGEIQ_MODULE_VARS = ('username',
                         'group',
                         'automate_workspace',
                         'X_MIQ_Group',
-                        'validate_certs')
+                        'validate_certs',
+                        'force_basic_auth',
+                        'client_cert',
+                        'client_key')
 
 
 

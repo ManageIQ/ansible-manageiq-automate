@@ -51,7 +51,11 @@ class ManageIQAutomate(object):
 
     def _build_auth(self):
         self._headers = {'Content-Type': 'application/json; charset=utf-8'}
+        # Force CERT validation to work with fetch_url
         self._module.params['validate_certs'] = self._module.params['manageiq_connection']['validate_certs']
+        self._module.params['force_basic_auth'] = self._module.params['manageiq_connection']['force_basic_auth']
+        self._module.params['client_cert'] = self._module.params['manageiq_connection']['client_cert']
+        self._module.params['client_key'] = self._module.params['manageiq_connection']['client_key']
         if self._module.params['manageiq_connection'].get('token'):
             self._headers["X-Auth-Token"] = self._module.params['manageiq_connection']['token']
         else:
