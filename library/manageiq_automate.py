@@ -64,7 +64,7 @@ class ManageIQAutomate(object):
         """
             The url to connect to the workspace
         """
-        url_str = self._module.params['manageiq_connection']['automate_workspace']
+        url_str = 'automate_workspaces/%s' % self._module.params['manageiq_connection']['automate_workspace']
         return self._api_url + '/' + url_str
 
 
