@@ -1,7 +1,7 @@
 ---
 auto_commit: False
 manageiq_connection:
-  api_url: 'http://localhost:3000'
+  url: 'http://localhost:3000'
   username: 'admin'
   password: 'password'
   automate_workspace: 'automate_workspaces/1234'
