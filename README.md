@@ -37,14 +37,14 @@ Validate Certs:
 ManageIQ:
     `manageiq_connection` is a dictionary with a set of connection defaults in `defaults/main.yml`.
     Remember to use Ansible Vault for passwords.
-    `automate_workspace` is the guid required to talk to the Automate Workspace.
+    `automate_workspace` is the href slug and guid required to talk to the Automate Workspace.
 
 ```
     manageiq_connection:
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
-        automate_workspace: '1234'
+        automate_workspace: 'automate_workspaces/1234'
         validate_certs: false
 ```
 
@@ -76,7 +76,7 @@ A verbose example with manual strings passed to each method of the
         url: 'https://localhost:3000'
         username: 'admin'
         password: 'password'
-        automate_workspace: '1234'
+        automate_workspace: 'automate_workspaces/1234'
         validate_certs: false
 
   roles:
@@ -218,7 +218,7 @@ attributes with passed in `method_parameters` and change the retry.
         url: 'http://localhost:3000'
         username: 'admin'
         password: 'password'
-        automate_workspace: '1234'
+        automate_workspace: 'automate_workspaces/1234'
 
   gather_facts: False
   roles:
