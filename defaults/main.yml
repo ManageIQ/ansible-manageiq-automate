@@ -1,7 +1,3 @@
 ---
-auto_commit: False
-#manageiq_connection:
-  #url: 'http://localhost:3000'
-  #username: 'admin'
-  #password: 'password'
-  #automate_workspace: 'automate_workspaces/1234'
+# Auto Commit defaults to True
+auto_commit: True

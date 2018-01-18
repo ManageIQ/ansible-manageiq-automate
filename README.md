@@ -24,8 +24,8 @@ Role Variables
 --------------
 
 Auto Commit:
-    `auto_commit` defaults to `False` in `defaults/main.yml`.
-    If set to `True` it will auto commit back to ManageIQ each
+    `auto_commit` defaults to `True` in `defaults/main.yml`.
+    If set to `False` it will not auto commit back to ManageIQ each
     call to a `set_` method in the `manageiq_automate` module.
 
 Validate Certs:
@@ -36,6 +36,10 @@ Validate Certs:
 
 ManageIQ:
     `manageiq_connection` is a dictionary with a set of connection defaults in `defaults/main.yml`.
+    Use of this connection information is ONLY needed if the role is used outside of a ManageIQ
+    appliance. A ManageIQ appliance passes in `manageiq_connection` via `extra_vars` so connection
+    information is included automatically.
+
     Remember to use Ansible Vault for passwords.
     `automate_workspace` is the href slug and guid required to talk to the Automate Workspace.
 
@@ -72,6 +76,7 @@ A verbose example with manual strings passed to each method of the
   gather_facts: False
   vars:
   - auto_commit: True
+  # Only needed if this playbook is NOT run on a ManageIQ Appliance
   - manageiq_connection:
         url: 'https://localhost:3000'
         username: 'admin'
