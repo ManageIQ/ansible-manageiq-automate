@@ -30,7 +30,8 @@ Auto Commit:
 
 Validate Certs:
     `manageiq_validate_certs` defaults to `True`.
-    If set to `False` in the `manageiq_connection` dictionary
+    If set to `False` in the `manageiq_connection` dictionary or
+    passed in via `extra_vars` or assigned in the playbook vars
     then the lookup will allow self signed certificates
     to be used when using SSL REST API connection urls.
 
@@ -39,7 +40,6 @@ ManageIQ:
     Use of this connection information is ONLY needed if the role is used outside of a ManageIQ
     appliance. A ManageIQ appliance passes in `manageiq_connection` via `extra_vars` so connection
     information is included automatically.
-
     Remember to use Ansible Vault for passwords.
     `automate_workspace` is the href slug and guid required to talk to the Automate Workspace.
 
