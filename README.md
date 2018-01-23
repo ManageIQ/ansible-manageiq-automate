@@ -36,7 +36,7 @@ Validate Certs:
     to be used when using SSL REST API connection urls.
 
 ManageIQ:
-    `manageiq_connection` is a dictionary with a set of connection defaults in `defaults/main.yml`.
+    `manageiq_connection` is a dictionary with connection default keys.
     Use of this connection information is ONLY needed if the role is used outside of a ManageIQ
     appliance. A ManageIQ appliance passes in `manageiq_connection` via `extra_vars` so connection
     information is included automatically.
@@ -219,6 +219,7 @@ attributes with passed in `method_parameters` and change the retry.
   - auto_commit: True
   - object: root
   - interval: 600
+  # Only needed if this playbook is NOT run on a ManageIQ Appliance
   - manageiq_connection:
         url: 'http://localhost:3000'
         username: 'admin'
