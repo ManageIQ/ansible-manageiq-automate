@@ -341,7 +341,7 @@ class Workspace(ManageIQAutomate):
         """
         attributes = dict()
         attributes['object'] = 'root'
-        attributes['attributes'] = dict(ae_result='retry', ae_retry_limit=dict_options['interval'])
+        attributes['attributes'] = dict(ae_result='retry', ae_retry_interval=dict_options['interval'])
 
         self.set_attributes(attributes)
         return self.set_or_commit()
