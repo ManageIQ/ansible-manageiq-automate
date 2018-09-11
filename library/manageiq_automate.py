@@ -27,6 +27,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
+DEFAULT_RETRY_INTERVAL = 60
 
 DOCUMENTATION = '''
 module: manageiq_automate
@@ -339,15 +340,20 @@ class Workspace(ManageIQAutomate):
         """
             Set Retry
         """
+        retry_interval = dict_options.get('interval') or DEFAULT_RETRY_INTERVAL
+
         attributes = dict()
         attributes['object'] = 'root'
-        attributes['attributes'] = dict(ae_result='retry', ae_retry_interval=dict_options['interval'])
+        attributes['attributes'] = dict(ae_result='retry', ae_retry_interval=retry_interval)
 
         self.set_attributes(attributes)
         return self.set_or_commit()
 
 
     def set_encrypted_attribute(self, dict_options):
+        """
+            Set encrypted attribute
+        """
         encrypted_attribute = self.encrypt(dict_options)
         return dict(changed=True, value=encrypted_attribute)
 
