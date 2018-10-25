@@ -91,7 +91,7 @@ class ManageIQAutomate(object):
             url = self.url()
 
         result, _info = fetch_url(self._module, url, None, self._headers, 'get')
-        if result is None
+        if result is None:
             self._module.fail_json(msg=_info['msg'])   
         return json.loads(result.read())
 
