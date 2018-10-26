@@ -18,6 +18,7 @@ that directory:
 ```
 ---
 - src: syncrou.manageiq-automate
+  version: v0.1.0
 ```
 
 Role Variables
