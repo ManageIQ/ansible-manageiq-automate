@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: "Drew Bomhof"
+  description: "Role / Module to Modify the ManageIQ Automate Workspace"
   company: Red Hat, Inc.
   license: license (Apache)
   min_ansible_version: 2.2
