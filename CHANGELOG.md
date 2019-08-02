@@ -9,3 +9,9 @@ This file adheres to the guidelines of [http://keepachangelog.com/](http://keepa
 ## Added
 
 - (GH-02) Resolve a syntax error that is only hit when something went wrong (credit: [miha-plesko](https://github.com/miha-plesko))
+
+## 0.1.1 - 2019-08-02
+
+## Added
+
+- (GH-03) Wrap all values in quotes for the exists method to override the bool() method setting those values as false.
