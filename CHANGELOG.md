@@ -4,6 +4,13 @@ This file contains al notable changes to the syncrou.manageiq-automate Ansible r
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/). "GH-X" refers to the X'th issue or pull request on the Github project.
 
+## 0.1.2 - 2019-08-20
+
+## Added
+
+- (GH-08) Add changes to allow compatibility with python 3
+- (GH-07) Add meta description to help get galaxy ratings up
+
 ## 0.1.1 - 2019-08-02
 
 ## Added
