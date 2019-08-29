@@ -19,7 +19,7 @@
 
 
 from __future__ import (absolute_import, division, print_function)
-import os, functools
+import os
 
 __metaclass__ = type
 
@@ -123,18 +123,16 @@ class ManageIQAutomate(object):
         return  json.loads(result.read())
 
 
-    def exists(self, path):
+    def exists(self, path, allow_null=False):
         """
             Validate all passed objects before attempting to set or get values from them
-
-            Wrap all reduced values in quotes so the bool() method will not
-            return a False on falsey values
         """
         list_path = path.split("|")
-        str = None
+        str = self._target['workspace']['input']['objects']['root'].get(list_path[-1])
+
         try:
-            reduced_str = functools.reduce(operator.getitem, list_path, self._target)
-            str = "%s" % (reduced_str)
+            if allow_null and not str:
+                return True
             return bool(str)
         except KeyError as error:
             return False
@@ -197,7 +195,7 @@ class Workspace(ManageIQAutomate):
         attribute = dict_options['attribute']
         path = "workspace|input|objects"
         search_path = "|".join([path, obj, attribute])
-        if self.exists(search_path):
+        if self.exists(search_path, True):
             return dict(changed=False, value=True)
         return dict(changed=False, value=False)
 
