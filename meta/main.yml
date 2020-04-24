@@ -1,22 +1,33 @@
 ---
 galaxy_info:
-  author: "Drew Bomhof"
-  description: "Role / Module to Modify the ManageIQ Automate Workspace"
-  company: Red Hat, Inc.
+  role_name: manageiq_automate
+  description: "Ansible role to modify the ManageIQ automate workspace"
+  author: "ManageIQ Authors"
   license: license (Apache)
   min_ansible_version: 2.2
   platforms:
-   - name: EL
-     versions:
-      - 7
-
-   - name: Fedora
-     versions:
-      - 25
-      - 26
-   - name: Ubuntu
-     versions:
-      - xenial
-      - precise
-  galaxy_tags: [manageiq, cloudforms, automate, rhel]
+  - name: EL
+    versions:
+    - 7
+    - 8
+  - name: Fedora
+    versions:
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+    - xenial
+    - bionic
+  galaxy_tags:
+  - manageiq
+  - cloudforms
+  - automate
 dependencies: []
