@@ -1,5 +1,7 @@
-manageiq.ansible_manageiq_automate
+manageiq.manageiq_automate
 =========
+
+https://galaxy.ansible.com/manageiq/manageiq_automate
 
 The `manageiq_automate` role allows for users of ManageIQ Automate to modify and add to the Automate Workspace via an Ansible Playbook.
 The role includes a module `manageiq_automate` which does all the heavy lifting needed to modify or change the Automate Workspace.
@@ -17,7 +19,7 @@ that directory:
 
 ```
 ---
-- source: manageiq.ansible_manageiq_automate
+- source: manageiq.manageiq_automate
   version: v0.1.3
 ```
 
@@ -86,7 +88,7 @@ A verbose example with manual strings passed to each method of the
         manageiq_validate_certs: false
 
   roles:
-  - manageiq.ansible_manageiq_automate
+  - manageiq.manageiq_automate
 
   tasks:
     - name: "Check an attribute"
@@ -230,7 +232,7 @@ attributes with passed in `method_parameters` and change the retry.
 
   gather_facts: False
   roles:
-  - manageiq.ansible_manageiq_automate
+  - manageiq.manageiq_automate
 
   tasks:
     - name: "Get the list of Method Parameters"
