@@ -20,7 +20,7 @@ that directory:
 ```
 ---
 - source: manageiq.manageiq_automate
-  version: v0.1.3
+  version: v1.0
 ```
 
 Role Variables

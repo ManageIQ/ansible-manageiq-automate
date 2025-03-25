@@ -1,30 +1,39 @@
 # Change log
 
-This file contains all notable changes to the manageiq.ansible_manageiq_automate Ansible role.
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
 
-This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/). "GH-X" refers to the X'th issue or pull request on the Github project.
+## [Unreleased]
 
-## 0.1.3 - 2019-08-30
+## [1.0.0] - 2025-03-25
 
-## Added
+### **BREAKING**
+- Renamed from manageiq.ansible_manageiq_automate to manageiq.manageiq_automate [[1795feca](https://github.com/ManageIQ/ansible-manageiq-automate/commit/1795feca)]
 
-- (GH-10) Allow for nulls in the exists method
+## [0.1.3] - 2019-08-30
 
-## 0.1.2 - 2019-08-20
+### Added
+- Allow for nulls in the exists method [[#10](https://github.com/ManageIQ/ansible-manageiq-automate/pull/10)]
 
-## Added
+## [0.1.2] - 2019-08-20
 
-- (GH-08) Add changes to allow compatibility with python 3
-- (GH-07) Add meta description to help get galaxy ratings up
+### Added
+- Add changes to allow compatibility with python 3 [[#8](https://github.com/ManageIQ/ansible-manageiq-automate/pull/8)]
+- Add meta description to help get galaxy ratings up [[#7](https://github.com/ManageIQ/ansible-manageiq-automate/pull/7)]
 
-## 0.1.1 - 2019-08-02
+## [0.1.1] - 2019-08-02
 
-## Added
+### Added
+- Wrap all values in quotes for the exists method to override the bool() method setting those values as false. [[#3](https://github.com/ManageIQ/ansible-manageiq-automate/pull/3)]
 
-- (GH-03) Wrap all values in quotes for the exists method to override the bool() method setting those values as false.
+## [0.1.0] - 2018-10-26
 
-## 0.1.0 - 2018-10-26
+### Added
+- Resolve a syntax error that is only hit when something went wrong [[#2](https://github.com/ManageIQ/ansible-manageiq-automate/pull/2)]
 
-## Added
-
-- (GH-02) Resolve a syntax error that is only hit when something went wrong (credit: [miha-plesko](https://github.com/miha-plesko))
+[Unreleased]: https://github.com/ManageIQ/ansible-manageiq-automate/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/ManageIQ/ansible-manageiq-automate/compare/v0.1.3...v1.0.0
+[0.1.3]: https://github.com/ManageIQ/ansible-manageiq-automate/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/ManageIQ/ansible-manageiq-automate/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/ManageIQ/ansible-manageiq-automate/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/ManageIQ/ansible-manageiq-automate/commits/v0.1.0/
