@@ -3,4 +3,4 @@
 - name: "Commit the Workspace"
   manageiq_automate:
     workspace: "{{ workspace }}"
-    commit_workspace: yes
+    commit_workspace: true
